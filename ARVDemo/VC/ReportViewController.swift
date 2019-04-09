@@ -7,73 +7,60 @@
 //
 
 import UIKit
-import XJYChart
 import MaterialComponents
-class ReportViewController: UIViewController,XJYChartDelegate {
+import CoreCharts
+class ReportViewController: UIViewController,CoreChartViewDataSource {
     var arrLogs = [LogsModel]()
     var vid = String()
     var month = String()
-    @IBOutlet weak var viewChart: MDCCard!
-    
+    @IBOutlet weak var viewChart: VCoreBarChart!
+    let cityNames = ["Istanbul","Antalya","Ankara","Trabzon","İzmir"]
+    let plateNumber = [34,07,06,61,35]
     @IBOutlet weak var lbltitle1: UILabel!
     @IBOutlet weak var lblTitle2: UILabel!
     @IBOutlet weak var lblTitle3: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-      
         lbltitle1.text = ""
         lblTitle2.text = ""
         lblTitle3.text = ""
+        viewChart.dataSource = self
+       
+    }
     
-        var itemArray: [AnyHashable] = []
-        let waveColor = UIColor.wave()
-        self.arrLogs = CoreDatamanager.manager.getAllLogs(vid: self.vid, month: month)
-        var topnumber  = 0
-        for item in self.arrLogs{
+    func didTouch(entryData: CoreChartEntry) {
+        print(entryData.barTitle)
+        lbltitle1.text = entryData.barTitle
+        lblTitle2.text = entryData.id + "Liter"
+    }
+    
+    func loadCoreChartData() -> [CoreChartEntry] {
+        
+        return getTurkeyFamouseCityList()
+        
+    }
+    
+    
+    func getTurkeyFamouseCityList()->[CoreChartEntry] {
+        var allCityData = [CoreChartEntry]()
+       
+        
+        for index in arrLogs {
             let formatter = DateFormatter()
             formatter.dateFormat = "dd/MM/yyyy"
-            let date = formatter.date(from: item.date)
+            let date = formatter.date(from: index.date)
             formatter.dateFormat = "dd MMM"
-            let datestr = formatter.string(from: date!)
-            var item1 = XBarItem()
-            if let value  = Int(item.quantity) {
-                item1 = XBarItem(dataNumber:NSNumber.init(value: value), color: waveColor, dataDescribe: datestr)
-                if topnumber < value{
-                    topnumber = value
-                }
            
-            }
-            if let value  = Double(item.quantity) {
-                item1 = XBarItem(dataNumber:NSNumber.init(value: value), color: waveColor, dataDescribe: datestr)
-                if topnumber < Int(value){
-                    topnumber = Int(value)
-                }
-              
-            }
-            itemArray.append(item1)
+            let newEntry = CoreChartEntry(id: index.quantity, barTitle:  formatter.string(from: date!), barHeight: Double(index.quantity) ?? 0.0, barColor: rainbowColor())
+            allCityData.append(newEntry)
+            
         }
         
-       
-        let configuration = XBarChartConfiguration()
-        configuration.isScrollable = false
-        configuration.x_width = 20
-        let barChart = XBarChart(frame: CGRect(x: 0, y: 0, width: 300, height: viewChart.frame.height), dataItemArray: NSMutableArray(array: itemArray), topNumber: NSNumber.init(value: topnumber), bottomNumber: 0, chartConfiguration: configuration)
-        barChart!.barChartDelegate = self
-        viewChart.addSubview(barChart!)
+        return allCityData
         
     }
-    func userClickedOnBar(at idx: Int) {
-        print(idx)
-        if arrLogs.count > idx {
-            let item = arrLogs[idx]
-            lbltitle1.text = item.quantity + "  " + item.unit
-            lblTitle2.text = item.date + "  " + item.price + " per " + item.unit
-            lblTitle3.text = item.odometer + " Kms"
-        }
-       
-    }
+    
    
     @IBAction func btnReport(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)

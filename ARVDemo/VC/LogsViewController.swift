@@ -36,7 +36,7 @@ class LogsViewController: UIViewController {
         strcurr = formatter.string(from: currentDate)
         month = formatter.string(from: currentDate)
         print(strcurr,strPre,str2ndpre)
-        btnCurrentmonth.setTitleColor(UIColor.peach(), for: .normal)
+        btnCurrentmonth.setTitleColor(UIColor.red, for: .normal)
         btnprevious.setTitleColor(UIColor.darkGray, for: .normal)
         btn2ndPrevious.setTitleColor(UIColor.darkGray, for: .normal)
    }
@@ -49,6 +49,7 @@ class LogsViewController: UIViewController {
         let vc  = self.storyboard?.instantiateViewController(withIdentifier: "ReportViewController") as! ReportViewController
         vc.vid = vid
         vc.month = month
+        vc.arrLogs = self.arrLogs
         self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func btnAddLog(_ sender: Any) {
@@ -61,7 +62,7 @@ class LogsViewController: UIViewController {
     }
     
     @IBAction func btn2ndPre(_ sender: Any) {
-        btn2ndPrevious.setTitleColor(UIColor.peach(), for: .normal)
+        btn2ndPrevious.setTitleColor(UIColor.red, for: .normal)
         btnCurrentmonth.setTitleColor(UIColor.darkGray, for: .normal)
         btnprevious.setTitleColor(UIColor.darkGray, for: .normal)
         month = str2ndpre
@@ -70,7 +71,7 @@ class LogsViewController: UIViewController {
     }
     
     @IBAction func btnCurrent(_ sender: Any) {
-        btnCurrentmonth.setTitleColor(UIColor.peach(), for: .normal)
+        btnCurrentmonth.setTitleColor(UIColor.red, for: .normal)
         btnprevious.setTitleColor(UIColor.darkGray, for: .normal)
         btn2ndPrevious.setTitleColor(UIColor.darkGray, for: .normal)
         month = strcurr
@@ -78,7 +79,7 @@ class LogsViewController: UIViewController {
         tbleView.reloadData()
     }
     @IBAction func btnPrevious(_ sender: Any) {
-        btnprevious.setTitleColor(UIColor.peach(), for: .normal)
+        btnprevious.setTitleColor(UIColor.red, for: .normal)
         btn2ndPrevious.setTitleColor(UIColor.darkGray, for: .normal)
         btnCurrentmonth.setTitleColor(UIColor.darkGray, for: .normal)
         month = strPre
