@@ -686,12 +686,15 @@
                                     <constraint firstItem="re5-i6-2YR" firstAttribute="leading" secondItem="YMw-Z8-iks" secondAttribute="leading" constant="10" id="sHh-zg-58I"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gEP-g8-fL0" customClass="MDCCard">
-                                <rect key="frame" x="15" y="104" width="345" height="300"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gEP-g8-fL0" customClass="MDCCard">
+                                <rect key="frame" x="0.0" y="104" width="375" height="300"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="3Pk-b0-P94"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="interactable" value="NO"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6sf-KJ-dPX">
                                 <rect key="frame" x="15" y="424" width="345" height="125"/>
@@ -734,8 +737,8 @@
                         <constraints>
                             <constraint firstItem="YMw-Z8-iks" firstAttribute="trailing" secondItem="pzA-I8-XY2" secondAttribute="trailing" id="0Ks-sJ-VW5"/>
                             <constraint firstItem="gEP-g8-fL0" firstAttribute="top" secondItem="YMw-Z8-iks" secondAttribute="bottom" constant="20" id="4vX-FU-3XP"/>
-                            <constraint firstItem="gEP-g8-fL0" firstAttribute="leading" secondItem="pzA-I8-XY2" secondAttribute="leading" constant="15" id="7y9-Tl-Nr4"/>
-                            <constraint firstItem="pzA-I8-XY2" firstAttribute="trailing" secondItem="gEP-g8-fL0" secondAttribute="trailing" constant="15" id="DJX-Ow-vmq"/>
+                            <constraint firstItem="gEP-g8-fL0" firstAttribute="leading" secondItem="pzA-I8-XY2" secondAttribute="leading" id="7y9-Tl-Nr4"/>
+                            <constraint firstItem="pzA-I8-XY2" firstAttribute="trailing" secondItem="gEP-g8-fL0" secondAttribute="trailing" id="DJX-Ow-vmq"/>
                             <constraint firstItem="pzA-I8-XY2" firstAttribute="trailing" secondItem="6sf-KJ-dPX" secondAttribute="trailing" constant="15" id="GSj-VT-MOX"/>
                             <constraint firstItem="YMw-Z8-iks" firstAttribute="top" secondItem="K2k-lx-TSa" secondAttribute="top" id="GsL-Pw-BoA"/>
                             <constraint firstItem="6sf-KJ-dPX" firstAttribute="leading" secondItem="pzA-I8-XY2" secondAttribute="leading" constant="15" id="crA-O6-Vdp"/>
@@ -758,9 +761,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="add-button-inside-black-circle" width="32" height="32"/>
-        <image name="left-arrow (4)" width="24" height="24"/>
-        <image name="line-chart" width="32" height="32"/>
-        <image name="motorcycle" width="128" height="128"/>
+        <image name="add-button-inside-black-circle" width="24" height="24"/>
+        <image name="left-arrow (4)" width="18" height="18"/>
+        <image name="line-chart" width="24" height="24"/>
+        <image name="motorcycle" width="512" height="512"/>
     </resources>
 </document>

@@ -57,9 +57,9 @@ class ReportViewController: UIViewController,XJYChartDelegate {
         
        
         let configuration = XBarChartConfiguration()
-        configuration.isScrollable = true
+        configuration.isScrollable = false
         configuration.x_width = 20
-        let barChart = XBarChart(frame: CGRect(x: 0, y: 0, width: viewChart.frame.width, height: viewChart.frame.height), dataItemArray: NSMutableArray(array: itemArray), topNumber: NSNumber.init(value: topnumber), bottomNumber: 0, chartConfiguration: configuration)
+        let barChart = XBarChart(frame: CGRect(x: 0, y: 0, width: 300, height: viewChart.frame.height), dataItemArray: NSMutableArray(array: itemArray), topNumber: NSNumber.init(value: topnumber), bottomNumber: 0, chartConfiguration: configuration)
         barChart!.barChartDelegate = self
         viewChart.addSubview(barChart!)
         

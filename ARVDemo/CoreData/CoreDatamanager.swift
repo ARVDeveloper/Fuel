@@ -19,7 +19,7 @@ class CoreDatamanager: NSObject {
         newUser.setValue(vehicle.id, forKey: "id")
         newUser.setValue(vehicle.name, forKey: "name")
         newUser.setValue(vehicle.odometer, forKey: "odometer")
-        newUser.setValue(vehicle.number, forKey: "type")
+        newUser.setValue(vehicle.type, forKey: "type")
         newUser.setValue(vehicle.number, forKey: "number")
         do {
             try context.save()

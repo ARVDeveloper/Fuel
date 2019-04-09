@@ -52,7 +52,7 @@ class ADDVehicleViewController: UIViewController {
         vModel.id =  "\(Int(CACurrentMediaTime()))"
         vModel.name = txtName.text!
         vModel.number = txtNumber.text!
-        vModel.name = txtName.text!
+        vModel.type = txtType.text!
         vModel.odometer = currentMeter.text!
         vModel.saveData(vehicle: vModel)
         self.navigationController?.popViewController(animated: true)
